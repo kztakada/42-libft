@@ -6,13 +6,13 @@
 #    By: katakada <katakada@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 16:04:12 by katakada          #+#    #+#              #
-#    Updated: 2024/07/02 16:58:58 by katakada         ###   ########.fr        #
+#    Updated: 2024/07/02 17:29:39 by katakada         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c
+SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
