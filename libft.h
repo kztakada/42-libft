@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:13:09 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/02 18:58:48 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:07:08 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dset, const void *src, size_t n);
 void				*ft_memmove(void *dset, const void *src, size_t n);
+size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 
 #endif
