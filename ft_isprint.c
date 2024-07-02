@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 17:13:09 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/02 16:57:55 by katakada         ###   ########.fr       */
+/*   Created: 2024/07/02 15:54:06 by katakada          #+#    #+#             */
+/*   Updated: 2024/07/02 16:56:25 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <limits.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-typedef struct s_list
+int	ft_isprint(int c)
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-int					ft_isalpha(int c);
-int					ft_isdigit(int c);
-int					ft_isalnum(int c);
-int					ft_isascii(int c);
-int					ft_isprint(int c);
-size_t				ft_strlen(const char *s);
-
-#endif
+	if (c >= 32 && c <= 126)
+		return (16384);
+	return (0);
+}
