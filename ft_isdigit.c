@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 17:13:09 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/02 15:10:48 by katakada         ###   ########.fr       */
+/*   Created: 2024/07/02 15:09:01 by katakada          #+#    #+#             */
+/*   Updated: 2024/07/02 15:16:03 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <limits.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-typedef struct s_list
+int	ft_isdigit(int c)
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-int					ft_isalpha(int c);
-int					ft_isdigit(int c);
-
-#endif
+	if (c >= '0' && c <= '9')
+		return (2048);
+	return (0);
+}
