@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 17:13:09 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/02 15:33:43 by katakada         ###   ########.fr       */
+/*   Created: 2024/07/02 15:32:07 by katakada          #+#    #+#             */
+/*   Updated: 2024/07/02 15:40:53 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <limits.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-typedef struct s_list
+int	ft_isalnum(int c)
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-int					ft_isalpha(int c);
-int					ft_isdigit(int c);
-int					ft_isalnum(int c);
-
-#endif
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0'
+			&& c <= '9'))
+		return (8);
+	return (0);
+}
