@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:00:26 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/04 18:17:49 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:33:59 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int	ft_toupper(int c)
 {
 	unsigned char	uc;
+	int				ctoupper;
 
 	if (c != -1)
 		uc = (unsigned char)c;
 	if (uc >= 'a' && uc <= 'z')
 	{
-		c = (int)(uc - 'a' + 'A');
-		return (c);
+		ctoupper = (int)(uc - 'a' + 'A');
+		return (ctoupper);
 	}
 	return (c);
 }
