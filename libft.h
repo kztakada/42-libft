@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:13:09 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/05 20:10:58 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/05 21:01:12 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strnstr(const char *big, const char *little,
 						size_t len);
 int					ft_atoi(const char *nptr);
+void				*ft_calloc(size_t nmemb, size_t size);
 
 #endif
