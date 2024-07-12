@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:50:21 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/11 17:21:26 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/12 20:13:32 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ char	*ft_itoa(int n)
 
 	nbr = n;
 	len = ft_numlen(n);
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
 	str[len] = '\0';
 	if (nbr < 0)
