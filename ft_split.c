@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:49:56 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/11 17:19:32 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/12 20:09:09 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,33 +53,40 @@ static char	*get_word(char const *s, char c, int *idx)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char	**fill_container(char **container, int words, char const *s, char c)
 {
-	char	**split;
-	int		words;
-	int		idx;
-	int		i;
+	int	idx;
+	int	i;
 
-	if (!s)
-		return (NULL);
-	words = count_words(s, c);
-	split = (char **)malloc(sizeof(char *) * (words + 1));
-	if (!split)
-		return (NULL);
 	idx = 0;
 	i = 0;
 	while (i < words)
 	{
-		split[i] = get_word(s, c, &idx);
-		if (!split[i])
+		container[i] = get_word(s, c, &idx);
+		if (!container[i])
 		{
 			while (i >= 0)
-				free(split[i--]);
-			free(split);
+				free(container[i--]);
+			free(container);
 			return (NULL);
 		}
 		i++;
 	}
-	split[i] = NULL;
-	return (split);
+	container[i] = NULL;
+	return (container);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**container;
+	int		words;
+
+	if (!s)
+		return (NULL);
+	words = count_words(s, c);
+	container = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!container)
+		return (NULL);
+	container = fill_container(container, words, s, c);
+	return (container);
 }
