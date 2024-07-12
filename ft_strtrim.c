@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:49:44 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/11 16:27:32 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/12 19:48:39 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*trim;
 	size_t	len_s1;
-	size_t	len_set;
 
 	if (!s1 || !set)
 		return (NULL);
 	len_s1 = ft_strlen(s1);
-	len_set = ft_strlen(set);
 	while (ft_strchr(set, *s1) && *s1)
 	{
 		s1++;
