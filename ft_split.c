@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:49:56 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/12 20:09:09 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:28:51 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*get_word(char const *s, char c, int *idx)
 	return (word);
 }
 
-char	**fill_container(char **container, int words, char const *s, char c)
+static char	**fill_container(char **container, int words, char const *s, char c)
 {
 	int	idx;
 	int	i;

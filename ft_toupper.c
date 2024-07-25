@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:00:26 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/24 19:34:18 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:28:10 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define ISLINUX 0
 #endif
 
-int	apple_toupper(int c)
+static int	apple_toupper(int c)
 {
 	int	ctoupper;
 
@@ -29,7 +29,7 @@ int	apple_toupper(int c)
 	return (c);
 }
 
-int	linux_toupper(int c)
+static int	linux_toupper(int c)
 {
 	int	ctoupper;
 

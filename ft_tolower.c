@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:19:32 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/24 19:31:14 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:27:53 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define ISLINUX 0
 #endif
 
-int	apple_tolower(int c)
+static int	apple_tolower(int c)
 {
 	int	ctolower;
 
@@ -29,7 +29,7 @@ int	apple_tolower(int c)
 	return (c);
 }
 
-int	linux_tolower(int c)
+static int	linux_tolower(int c)
 {
 	int	ctolower;
 
