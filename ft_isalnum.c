@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 15:32:07 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/24 17:44:20 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/28 20:29:52 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 
 int	ft_isalnum(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0'
-			&& c <= '9'))
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (TRUE_PARAM);
 	return (0);
 }

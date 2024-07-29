@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:38:03 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/04 18:52:11 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:13:31 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	uc;
-	unsigned char	*us;
+	unsigned char	search_char;
+	unsigned char	*target_pos;
 
-	uc = (unsigned char)c;
-	us = (unsigned char *)s;
-	while (*us)
+	search_char = (unsigned char)c;
+	target_pos = (unsigned char *)s;
+	while (*target_pos)
 	{
-		if (*us == uc)
-			return ((char *)us);
-		us++;
+		if (*target_pos == search_char)
+			return ((char *)target_pos);
+		target_pos++;
 	}
-	if (uc == '\0')
-		return ((char *)us);
+	if (search_char == '\0')
+		return ((char *)target_pos);
 	return (NULL);
 }

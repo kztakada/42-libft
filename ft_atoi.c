@@ -6,41 +6,41 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:08:39 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/05 22:03:17 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/28 19:39:14 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long	handle_overflow(const char *nptr, int sign)
+static long	ascii_to_int(const char *nptr, int sign)
 {
-	unsigned long	ret;
+	unsigned long	value;
 	int				digit;
-	unsigned long	cutoff;
+	unsigned long	max_limit;
 
-	ret = 0;
-	cutoff = (unsigned long)LONG_MAX;
+	value = 0;
+	max_limit = (unsigned long)LONG_MAX;
 	while (ft_isdigit(*nptr))
 	{
 		digit = *nptr - '0';
-		if (sign == 1 && ret > ((cutoff - digit) / 10))
+		if (sign == 1 && value > ((max_limit - digit) / 10))
 			return (LONG_MAX);
-		if (sign == -1 && ret > ((cutoff + 1 - digit) / 10))
+		if (sign == -1 && value > ((max_limit + 1 - digit) / 10))
 			return (LONG_MIN);
-		ret = ret * 10 + digit;
+		value = value * 10 + digit;
 		nptr++;
 	}
-	return (ret);
+	return (value);
 }
 
 int	ft_atoi(const char *nptr)
 {
 	int		sign;
-	long	result;
+	long	abs_value;
 
 	sign = 1;
-	result = 0;
-	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
+	abs_value = 0;
+	while (*nptr == ' ' || (*nptr >= '\t' && *nptr <= '\r'))
 		nptr++;
 	if (*nptr == '-' || *nptr == '+')
 	{
@@ -48,6 +48,6 @@ int	ft_atoi(const char *nptr)
 			sign = -1;
 		nptr++;
 	}
-	result = (int)handle_overflow(nptr, sign);
-	return ((int)(result * sign));
+	abs_value = (int)ascii_to_int(nptr, sign);
+	return ((int)(abs_value * sign));
 }

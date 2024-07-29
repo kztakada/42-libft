@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:01:47 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/02 19:36:42 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:03:57 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
+	size_t	target_pos;
 
-	i = 0;
 	if (!dst || !src)
 		return (0);
+	target_pos = 0;
 	if (size)
 	{
-		while (src[i] && i < size - 1)
+		while (src[target_pos] && (target_pos < (size - 1)))
 		{
-			dst[i] = src[i];
-			i++;
+			dst[target_pos] = src[target_pos];
+			target_pos++;
 		}
-		dst[i] = '\0';
+		dst[target_pos] = '\0';
 	}
-	while (src[i])
-		i++;
-	return (i);
+	return (ft_strlen(src));
 }

@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:50:49 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/11 18:31:55 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:26:01 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	unsigned int	idx;
+	unsigned int	str_index;
 
-	idx = 0;
 	if (!s || !f)
 		return ;
-	while (s[idx])
+	str_index = 0;
+	while (s[str_index])
 	{
-		f(idx, &s[idx]);
-		idx++;
+		f(str_index, &s[str_index]);
+		str_index++;
 	}
 }

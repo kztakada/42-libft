@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:51:36 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/12 16:59:53 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/30 00:17:07 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	if (!s)
 		return ;
-	write(fd, s, ft_strlen(s));
+	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:49:56 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/25 20:28:51 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/28 23:40:43 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,79 +14,82 @@
 
 static int	count_words(char const *s, char c)
 {
-	int	words;
-	int	idx;
+	int	w_count;
+	int	s_index;
 
-	words = 0;
-	idx = 0;
-	while (s[idx])
+	w_count = 0;
+	s_index = 0;
+	while (s[s_index])
 	{
-		if (s[idx] != c)
+		if (s[s_index] != c)
 		{
-			words++;
-			while (s[idx] && s[idx] != c)
-				idx++;
+			w_count++;
+			while (s[s_index] && s[s_index] != c)
+				s_index++;
 		}
 		else
-			idx++;
+			s_index++;
 	}
-	return (words);
+	return (w_count);
 }
 
-static char	*get_word(char const *s, char c, int *idx)
+static int	get_cpylen(char const *s, int s_start, char c)
 {
-	char	*word;
-	int		i;
+	int	cpylen;
 
-	i = 0;
-	while (s[*idx] && s[*idx] == c)
-		(*idx)++;
-	while (s[*idx + i] && s[*idx + i] != c)
-		i++;
-	word = (char *)malloc(sizeof(char) * (i + 1));
-	if (!word)
-		return (NULL);
-	i = 0;
-	while (s[*idx] && s[*idx] != c)
-		word[i++] = s[(*idx)++];
-	word[i] = '\0';
-	return (word);
+	cpylen = 0;
+	while (s[s_start + cpylen] && s[s_start + cpylen] != c)
+		cpylen++;
+	return (cpylen);
 }
 
-static char	**fill_container(char **container, int words, char const *s, char c)
+static void	*free_strs(char **strs)
 {
-	int	idx;
 	int	i;
 
-	idx = 0;
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
+	return (NULL);
+}
+
+static char	**fill_strs(char **strs, int words, char const *s, char c)
+{
+	int	s_start;
+	int	cpylen;
+	int	i;
+
+	s_start = 0;
 	i = 0;
 	while (i < words)
 	{
-		container[i] = get_word(s, c, &idx);
-		if (!container[i])
-		{
-			while (i >= 0)
-				free(container[i--]);
-			free(container);
-			return (NULL);
-		}
+		while (s[s_start] && s[s_start] == c)
+			s_start++;
+		cpylen = get_cpylen(s, s_start, c);
+		strs[i] = ft_substr(s, s_start, cpylen);
+		if (!strs[i])
+			return (free_strs(strs));
+		s_start += cpylen;
 		i++;
 	}
-	container[i] = NULL;
-	return (container);
+	strs[i] = NULL;
+	return (strs);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**container;
-	int		words;
+	char	**strs;
+	int		w_count;
 
 	if (!s)
 		return (NULL);
-	words = count_words(s, c);
-	container = (char **)malloc(sizeof(char *) * (words + 1));
-	if (!container)
+	w_count = count_words(s, c);
+	strs = (char **)malloc(sizeof(char *) * (w_count + 1));
+	if (!strs)
 		return (NULL);
-	container = fill_container(container, words, s, c);
-	return (container);
+	strs = fill_strs(strs, w_count, s, c);
+	if (!strs)
+		return (NULL);
+	return (strs);
 }

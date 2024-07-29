@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:50:35 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/11 18:28:50 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:14:06 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	idx;
-	char			*str;
+	unsigned int	str_index;
+	char			*generated_str;
 
 	if (!s || !f)
 		return (NULL);
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!str)
+	generated_str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!generated_str)
 		return (NULL);
-	idx = 0;
-	while (s[idx])
+	str_index = 0;
+	while (s[str_index])
 	{
-		str[idx] = f(idx, s[idx]);
-		idx++;
+		generated_str[str_index] = f(str_index, s[str_index]);
+		str_index++;
 	}
-	str[idx] = '\0';
-	return (str);
+	generated_str[str_index] = '\0';
+	return (generated_str);
 }

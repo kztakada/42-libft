@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:49:44 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/12 19:48:39 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/29 22:28:00 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*trim;
-	size_t	len_s1;
+	char const	*oneside_trim;
+	size_t		untrimmed_len;
+	char		*trimmed_str;
 
 	if (!s1 || !set)
 		return (NULL);
-	len_s1 = ft_strlen(s1);
-	while (ft_strchr(set, *s1) && *s1)
+	oneside_trim = s1;
+	untrimmed_len = ft_strlen(s1);
+	while (*oneside_trim && ft_strchr(set, *oneside_trim))
 	{
-		s1++;
-		len_s1--;
+		oneside_trim++;
+		untrimmed_len--;
 	}
-	while (ft_strchr(set, s1[len_s1 - 1]) && len_s1)
-		len_s1--;
-	trim = (char *)malloc(sizeof(char) * (len_s1 + 1));
-	if (!trim)
+	while (untrimmed_len && ft_strchr(set, oneside_trim[untrimmed_len - 1]))
+		untrimmed_len--;
+	trimmed_str = (char *)malloc(sizeof(char) * (untrimmed_len + 1));
+	if (!trimmed_str)
 		return (NULL);
-	ft_strlcpy(trim, s1, len_s1 + 1);
-	return (trim);
+	ft_strlcpy(trimmed_str, oneside_trim, untrimmed_len + 1);
+	return (trimmed_str);
 }

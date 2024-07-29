@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:51:50 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/12 17:01:07 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/30 00:27:40 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long	nbr;
+	long	number;
 
-	nbr = n;
-	if (nbr < 0)
+	number = (long)n;
+	if (number < 0)
 	{
-		write(fd, "-", 1);
-		nbr *= -1;
+		ft_putchar_fd('-', fd);
+		number *= -1;
 	}
-	if (nbr >= 10)
-		ft_putnbr_fd(nbr / 10, fd);
-	write(fd, &"0123456789"[nbr % 10], 1);
+	if (number >= 10)
+		ft_putnbr_fd(number / 10, fd);
+	ft_putchar_fd(number % 10 + '0', fd);
 }
