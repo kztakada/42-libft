@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:52:39 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/12 19:10:15 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:39:49 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int		size;
-	t_list	*tmp;
+	int		size_count;
+	t_list	*current_list;
 
-	size = 0;
-	tmp = lst;
-	while (tmp)
+	size_count = 0;
+	current_list = lst;
+	while (current_list)
 	{
-		size++;
-		tmp = tmp->next;
+		size_count++;
+		current_list = current_list->next;
 	}
-	return (size);
+	return (size_count);
 }

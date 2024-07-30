@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:52:11 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/12 19:09:10 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:27:02 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*new;
+	t_list	*new_list;
 
-	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
+	new_list = (t_list *)malloc(sizeof(t_list));
+	if (!new_list)
 		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	new_list->content = content;
+	new_list->next = NULL;
+	return (new_list);
 }

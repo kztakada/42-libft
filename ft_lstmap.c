@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:53:54 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/26 13:21:01 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:28:06 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,27 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*node;
-	void	*mapped_content;
+	t_list	*mapped_new_list;
+	t_list	*target_list;
+	t_list	*next_list;
+	void	*next_content;
 
 	if (!lst || !f || !del)
 		return (NULL);
-	new_lst = NULL;
-	while (lst)
+	mapped_new_list = NULL;
+	target_list = lst;
+	while (target_list)
 	{
-		mapped_content = f(lst->content);
-		node = ft_lstnew(mapped_content);
-		if (!node)
+		next_content = f(target_list->content);
+		next_list = ft_lstnew(next_content);
+		if (!next_list)
 		{
-			del(mapped_content);
-			ft_lstclear(&new_lst, del);
+			del(next_content);
+			ft_lstclear(&mapped_new_list, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&new_lst, node);
-		lst = lst->next;
+		ft_lstadd_back(&mapped_new_list, next_list);
+		target_list = target_list->next;
 	}
-	return (new_lst);
+	return (mapped_new_list);
 }

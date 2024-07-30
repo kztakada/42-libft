@@ -6,7 +6,7 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:53:40 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/13 18:53:17 by katakada         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:01:24 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*tmp;
+	t_list	*target_list;
 
 	if (!lst || !f)
 		return ;
-	tmp = lst;
-	while (tmp)
+	target_list = lst;
+	while (target_list)
 	{
-		f(tmp->content);
-		tmp = tmp->next;
+		f(target_list->content);
+		target_list = target_list->next;
 	}
 }
