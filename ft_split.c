@@ -6,89 +6,90 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:49:56 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/28 23:40:43 by katakada         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:04:34 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static int	count_words(char const *str_src, char split_char)
 {
-	int	w_count;
-	int	s_index;
+	int	word_count;
+	int	str_index;
 
-	w_count = 0;
-	s_index = 0;
-	while (s[s_index])
+	word_count = 0;
+	str_index = 0;
+	while (str_src[str_index])
 	{
-		if (s[s_index] != c)
+		if (str_src[str_index] != split_char)
 		{
-			w_count++;
-			while (s[s_index] && s[s_index] != c)
-				s_index++;
+			word_count++;
+			while (str_src[str_index] && str_src[str_index] != split_char)
+				str_index++;
 		}
 		else
-			s_index++;
+			str_index++;
 	}
-	return (w_count);
+	return (word_count);
 }
 
-static int	get_cpylen(char const *s, int s_start, char c)
+static int	get_copylen(char const *str_src, int str_idx, char split_char)
 {
 	int	cpylen;
 
 	cpylen = 0;
-	while (s[s_start + cpylen] && s[s_start + cpylen] != c)
+	while (str_src[str_idx + cpylen] && str_src[str_idx + cpylen] != split_char)
 		cpylen++;
 	return (cpylen);
 }
 
 static void	*free_strs(char **strs)
 {
-	int	i;
+	int	strs_index;
 
-	i = 0;
-	while (strs[i])
-		free(strs[i++]);
+	strs_index = 0;
+	while (strs[strs_index])
+		free(strs[strs_index++]);
 	free(strs);
 	return (NULL);
 }
 
-static char	**fill_strs(char **strs, int words, char const *s, char c)
+static char	**fill_strs(char **strs, int word_count, char const *str_src,
+		char split_char)
 {
-	int	s_start;
-	int	cpylen;
+	int	str_index;
+	int	copylen;
 	int	i;
 
-	s_start = 0;
+	str_index = 0;
 	i = 0;
-	while (i < words)
+	while (i < word_count)
 	{
-		while (s[s_start] && s[s_start] == c)
-			s_start++;
-		cpylen = get_cpylen(s, s_start, c);
-		strs[i] = ft_substr(s, s_start, cpylen);
+		while (str_src[str_index] && str_src[str_index] == split_char)
+			str_index++;
+		copylen = get_copylen(str_src, str_index, split_char);
+		strs[i] = ft_substr(str_src, str_index, copylen);
 		if (!strs[i])
 			return (free_strs(strs));
-		s_start += cpylen;
+		str_index += copylen;
 		i++;
 	}
 	strs[i] = NULL;
 	return (strs);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *str_src, char split_char)
 {
 	char	**strs;
-	int		w_count;
+	int		word_count;
 
-	if (!s)
+	if (!str_src)
 		return (NULL);
-	w_count = count_words(s, c);
-	strs = (char **)malloc(sizeof(char *) * (w_count + 1));
+	word_count = count_words(str_src, split_char);
+	strs = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!strs)
 		return (NULL);
-	strs = fill_strs(strs, w_count, s, c);
+	strs = fill_strs(strs, word_count, str_src, split_char);
 	if (!strs)
 		return (NULL);
 	return (strs);

@@ -6,13 +6,13 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:50:21 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/28 20:06:04 by katakada         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:28:02 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	numlen(int n)
+static int	intlen(int n)
 {
 	int	len;
 
@@ -27,29 +27,31 @@ static int	numlen(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int int_src)
 {
-	long	ncpy;
-	int		digit_pos;
-	char	*str;
+	long	target_int;
+	int		int_digits;
+	int		str_index;
+	char	*new_str;
 
-	ncpy = n;
-	digit_pos = numlen(n);
-	str = (char *)malloc(sizeof(char) * (digit_pos + 1));
-	if (!str)
+	target_int = int_src;
+	int_digits = intlen(int_src);
+	new_str = (char *)malloc(sizeof(char) * (int_digits + 1));
+	str_index = int_digits;
+	if (!new_str)
 		return (NULL);
-	str[digit_pos] = '\0';
-	if (ncpy < 0)
+	new_str[str_index] = '\0';
+	if (target_int < 0)
 	{
-		str[0] = '-';
-		ncpy *= -1;
+		new_str[0] = '-';
+		target_int *= -1;
 	}
-	if (ncpy == 0)
-		str[0] = '0';
-	while (ncpy)
+	if (target_int == 0)
+		new_str[0] = '0';
+	while (target_int)
 	{
-		str[--digit_pos] = ncpy % 10 + '0';
-		ncpy /= 10;
+		new_str[--str_index] = target_int % 10 + '0';
+		target_int /= 10;
 	}
-	return (str);
+	return (new_str);
 }

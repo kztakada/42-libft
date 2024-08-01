@@ -6,27 +6,30 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:01:47 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/29 18:03:57 by katakada         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:23:16 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *copy_str_dest, const char *copy_str_src,
+		size_t copy_len)
 {
-	size_t	target_pos;
+	size_t	str_index;
+	size_t	copyable_len;
 
-	if (!dst || !src)
+	if (!copy_str_dest || !copy_str_src)
 		return (0);
-	target_pos = 0;
-	if (size)
+	if (copy_len > 0)
 	{
-		while (src[target_pos] && (target_pos < (size - 1)))
+		str_index = 0;
+		copyable_len = copy_len - 1;
+		while (copy_str_src[str_index] && (str_index < copyable_len))
 		{
-			dst[target_pos] = src[target_pos];
-			target_pos++;
+			copy_str_dest[str_index] = copy_str_src[str_index];
+			str_index++;
 		}
-		dst[target_pos] = '\0';
+		copy_str_dest[str_index] = '\0';
 	}
-	return (ft_strlen(src));
+	return (ft_strlen(copy_str_src));
 }

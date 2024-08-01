@@ -6,32 +6,32 @@
 /*   By: katakada <katakada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:49:44 by katakada          #+#    #+#             */
-/*   Updated: 2024/07/29 22:28:00 by katakada         ###   ########.fr       */
+/*   Updated: 2024/08/01 20:45:03 by katakada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *str_src, char const *delimiters)
 {
 	char const	*oneside_trim;
-	size_t		untrimmed_len;
+	size_t		untrim_len;
 	char		*trimmed_str;
 
-	if (!s1 || !set)
+	if (!str_src || !delimiters)
 		return (NULL);
-	oneside_trim = s1;
-	untrimmed_len = ft_strlen(s1);
-	while (*oneside_trim && ft_strchr(set, *oneside_trim))
+	oneside_trim = str_src;
+	untrim_len = ft_strlen(str_src);
+	while (*oneside_trim && ft_strchr(delimiters, *oneside_trim))
 	{
 		oneside_trim++;
-		untrimmed_len--;
+		untrim_len--;
 	}
-	while (untrimmed_len && ft_strchr(set, oneside_trim[untrimmed_len - 1]))
-		untrimmed_len--;
-	trimmed_str = (char *)malloc(sizeof(char) * (untrimmed_len + 1));
+	while (untrim_len && ft_strchr(delimiters, oneside_trim[untrim_len - 1]))
+		untrim_len--;
+	trimmed_str = (char *)malloc(sizeof(char) * (untrim_len + 1));
 	if (!trimmed_str)
 		return (NULL);
-	ft_strlcpy(trimmed_str, oneside_trim, untrimmed_len + 1);
+	ft_strlcpy(trimmed_str, oneside_trim, untrim_len + 1);
 	return (trimmed_str);
 }
